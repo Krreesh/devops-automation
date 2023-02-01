@@ -11,7 +11,7 @@ public class DevopsIntegrationApplication {
 
 	@GetMapping
 	public String message(){
-		return "Welcome to Cognizant!";
+		return "Welcome to Amazon!";
 	}
 
 	public static void main(String[] args) {
