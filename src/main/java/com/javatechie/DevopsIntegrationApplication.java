@@ -11,7 +11,7 @@ public class DevopsIntegrationApplication {
 
 	@GetMapping
 	public String message(){
-		return "Welcome to Jurrasic World!";
+		return "Welcome to Cognizant!";
 	}
 
 	public static void main(String[] args) {
