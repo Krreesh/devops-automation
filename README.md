@@ -2,11 +2,28 @@
 
 <h2>Kubernetes Status</h2>
 <pre>
-[ec2-user@ip-172-31-85-97 ~]$ k get svc
-NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          20d
-mysql                 NodePort    10.97.199.243   <none>        3306:31819/TCP   12h
-springboot-crud-svc   NodePort    10.110.62.170   <none>        8080:30463/TCP   11h
+[ec2-user@ip-172-31-85-97 ~]$ k get all
+NAME                                              READY   STATUS    RESTARTS      AGE
+pod/angular-app                                   1/1     Running   4 (11h ago)   42h
+pod/mysql-fb4dd8d-k9sp6                           1/1     Running   1 (11h ago)   14h
+pod/springboot-crud-deployment-7f9bb7cfdb-8946p   1/1     Running   0             92m
+pod/springboot-crud-deployment-7f9bb7cfdb-mnnrd   1/1     Running   0             92m
+pod/springboot-crud-deployment-7f9bb7cfdb-xsmjz   1/1     Running   0             12h
+
+NAME                          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          20d
+service/mysql                 NodePort    10.97.199.243   <none>        3306:31819/TCP   12h
+service/springboot-crud-svc   NodePort    10.110.62.170   <none>        8080:30463/TCP   12h
+
+NAME                                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mysql                        1/1     1            1           14h
+deployment.apps/springboot-crud-deployment   3/3     3            3           12h
+
+NAME                                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/mysql-fb4dd8d                           1         1         1       14h
+replicaset.apps/springboot-crud-deployment-7f9bb7cfdb   3         3         3       12h
+replicaset.apps/springboot-crud-deployment-7fb5f8fc9c   0         0         0       12h
+
 [ec2-user@ip-172-31-85-97 ~]$ k port-forward service/springboot-crud-svc --address=0.0.0.0 8080:8080
 Forwarding from 0.0.0.0:8080 -> 8989
 Handling connection for 8080
